@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -50,7 +51,9 @@ class _HomePageState extends State<HomePage> {
             n = n < 47 ? n + 1 : 40;
           });
 
-          final result = runFibonacci(n);
+          final result = await compute((int value) {
+            return runFibonacci(value);
+          }, n);
 
           setState(() {
             calculatedResult = result.toString();
